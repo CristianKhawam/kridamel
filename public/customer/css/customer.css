@@ -1,0 +1,9 @@
+/* Styles only for the customer store. Loaded after /css/base.css. */
+:root {
+  /* Category themes: banner, buttons and chips use the colour of their category */
+  --color-clothing: #2b4c7e;
+  --color-electronics: #1b6e5a;
+  --color-sports: #8b2f2f;
+}
+
+/* ---------- Page-specific styles go below, one section per page ---------- */

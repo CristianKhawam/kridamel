@@ -1,0 +1,34 @@
+<!doctype html>
+<!--
+  ADMIN PAGE TEMPLATE
+  1. Copy this file to public/admin/<page-name>.html (lowercase-with-hyphens, e.g. order-detail.html).
+  2. Create its script: public/admin/js/<page-name>.js and change the last <script> below.
+  3. Write only this page's content inside <main>.
+  Header and footer are NOT written here: js/layout.js fills them on every page.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page name · KRIDAMEL Admin</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="container">
+    <h1>Page title</h1>
+    <!-- Loading and error messages, filled by the page script. -->
+    <p id="status" class="status" role="status"></p>
+    <!-- Data from the API, filled by the page script. -->
+    <div id="content"></div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/admin/js/layout.js"></script>
+  <script src="/admin/js/page-name.js"></script>
+</body>
+</html>

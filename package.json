@@ -1,0 +1,20 @@
+{
+  "name": "kridamel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SODV1251 final group project - department store e-commerce (Node.js/Express + MongoDB)",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon --watch server server/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

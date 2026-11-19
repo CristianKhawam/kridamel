@@ -1,0 +1,6 @@
+/* Styles only for the admin panel. Loaded after /css/base.css. */
+:root {
+  --color-brand: #111827; /* darker header so it is clear you are in the admin panel */
+}
+
+/* ---------- Page-specific styles go below, one section per page ---------- */
