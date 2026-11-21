@@ -9,6 +9,7 @@ try {
 const path = require('path');
 const express = require('express');
 
+const connectDB = require('./config/db');
 const healthRoutes = require('./routes/health.routes');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
@@ -37,6 +38,9 @@ app.use((req, res) => {
 // Central error handler: always the last app.use().
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+// Connect to the database first, then start accepting requests.
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
 });
