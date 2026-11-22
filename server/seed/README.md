@@ -2,11 +2,20 @@
 
 A script that fills the database with demo data: categories, brands, tags, products with variants, coupons and demo accounts.
 
-**Planned file:** `seed.js`. When it exists, add this script to `package.json` and run it with `npm run seed`:
+| File | Does |
+|---|---|
+| `data.js` | The demo data as plain arrays: 3 categories + 10 subcategories, 6 brands, 3 tags, 30 products (119 variants, some low or out of stock), 3 users, 2 coupons |
+| `seed.js` | Empties the collections, then inserts everything from `data.js` (passwords hashed with bcrypt) |
 
-```json
-"seed": "node server/seed/seed.js"
+Run it with:
+
+```bash
+npm run seed
 ```
+
+⚠️ It **deletes** the current data first. Everyone shares the same Atlas database, so tell the team before running it.
+
+Product images are the placeholders in `public/images/` (one per top-level category).
 
 **Rules**
 - **Fictitious data only.** Demo customers use cartoon/anime character names (SpongeBob SquarePants, Ash Ketchum, Naruto Uzumaki) with joke addresses and `@example.com` emails. Brands are invented.

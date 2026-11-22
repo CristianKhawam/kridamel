@@ -72,11 +72,12 @@ The final split is still being discussed. Every member reviews pull requests and
 
 ## Setup
 
-Requirements: Node.js 20 or newer, and a MongoDB Atlas connection string.
+Requirements: Node.js 20.19 or newer, and a MongoDB Atlas connection string.
 
 ```bash
 npm install            # first time only (and after someone adds a package)
 cp .env.example .env   # first time only, then fill in the values
+npm run seed           # first time only: fills the database with demo data
 npm run dev            # starts everything: pages + API
 ```
 
@@ -86,6 +87,8 @@ The store runs at `http://localhost:3000` and the admin panel at `http://localho
 |---|---|
 | `npm run dev` | Working on the project. **nodemon** restarts the server every time you save a file in `server/`. Changes in `public/` only need a browser refresh. |
 | `npm start` | Running it like production (Render uses this). No auto-restart. |
+| `npm run seed` | Deletes the data and loads the demo data again (shared database: warn the team first). |
+| `npm test` | Runs the automated tests (`*.test.js` files). |
 
 Always open the pages through `http://localhost:3000`. Opening the HTML file directly or with the VS Code preview will not load the header, footer, styles or API.
 
@@ -105,7 +108,15 @@ Secrets are never committed. `.env` is in `.gitignore`.
 
 ## Demo accounts
 
-Will be added at Checkpoint 2 (fictitious data only).
+Created by `npm run seed`. All data is fictitious (cartoon characters, `example.com` emails).
+
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@example.com` | `Admin123!` |
+| Customer | `spongebob@example.com` | `Customer123!` |
+| Customer | `ash.ketchum@example.com` | `Customer123!` |
+
+Coupons: `WELCOME10` (10% off) and `SAVE5` ($5 off orders over $50).
 
 ## Deployment
 
