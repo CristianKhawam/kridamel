@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Electronics">
+  <rect width="400" height="400" fill="#e6f2ee"/>
+  <rect x="100" y="110" width="200" height="130" rx="10" fill="#1b6e5a"/>
+  <rect x="115" y="125" width="170" height="100" fill="#cfe7df"/>
+  <path d="M70 260 H330 L310 290 H90 Z" fill="#1b6e5a"/>
+</svg>
