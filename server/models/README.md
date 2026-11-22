@@ -10,7 +10,7 @@ One Mongoose model per MongoDB collection. The fields follow the database schema
 | `Category.js` | categories | Top-level categories have `parent: null`; subcategories point to their parent. Unique `slug`, `themeColor` |
 | `Brand.js` | brands | Fictitious brands, unique name |
 | `Tag.js` | tags | New Arrival, Best Seller, Sale |
-| `Product.js` | products | Price in cents, optional `salePrice` lower than `price`, embedded `variants` with their own `stock`, unique SKU |
+| `Product.js` | products | Price in cents, optional `salePrice` lower than `price`, embedded `variants` with their own `stock`, unique SKU, `currentPrice` (sale price or price, set automatically, used to filter and sort) |
 
 Tests: `models.test.js` checks the validation rules with `validate()`, without a database (`npm test`).
 

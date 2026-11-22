@@ -11,6 +11,9 @@ const express = require('express');
 
 const connectDB = require('./config/db');
 const healthRoutes = require('./routes/health.routes');
+const categoriesRoutes = require('./routes/categories.routes');
+const productsRoutes = require('./routes/products.routes');
+const brandsRoutes = require('./routes/brands.routes');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -26,6 +29,9 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // API routes: one router per resource, mounted under /api/<resource>.
 app.use('/api/health', healthRoutes);
+app.use('/api/categories', categoriesRoutes);
+app.use('/api/products', productsRoutes);
+app.use('/api/brands', brandsRoutes);
 
 // Unknown API routes return 404 JSON, not the HTML page.
 app.use('/api', notFound);

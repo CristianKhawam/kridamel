@@ -74,3 +74,12 @@ test('category theme colour must be a hex colour', async () => {
   const errors = await errorsOf(new Category({ name: 'Clothing', slug: 'clothing', themeColor: 'blue' }));
   assert.ok(errors.themeColor);
 });
+
+test('currentPrice is the sale price when there is one, otherwise the price', async () => {
+  const onSale = new Product({ ...validProduct(), salePrice: 1499 });
+  await onSale.validate();
+  assert.strictEqual(onSale.currentPrice, 1499);
+  const regular = new Product(validProduct());
+  await regular.validate();
+  assert.strictEqual(regular.currentPrice, 1999);
+});
