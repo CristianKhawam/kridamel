@@ -47,9 +47,18 @@ const productSchema = new mongoose.Schema(
     ratingAvg: { type: Number, min: 0, max: 5, default: 0 },
     ratingCount: { type: Number, min: 0, default: 0 },
     soldCount: { type: Number, min: 0, default: 0 },
+    // The price the customer pays now: the sale price if there is one, otherwise the price.
+    // Filled automatically below; the catalog API filters and sorts by it.
+    currentPrice: { type: Number, index: true },
   },
   { timestamps: true }
 );
+
+// Before every save/create/insertMany, keep currentPrice up to date.
+// (updateOne/findOneAndUpdate skip this hook, so admin edits should use save().)
+productSchema.pre('validate', function () {
+  this.currentPrice = this.salePrice ?? this.price;
+});
 
 // Two variants (in any product) cannot share a SKU.
 productSchema.index({ 'variants.sku': 1 }, { unique: true });
