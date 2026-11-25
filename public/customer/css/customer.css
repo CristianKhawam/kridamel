@@ -6,4 +6,91 @@
   --color-sports: #8b2f2f;
 }
 
-/* ---------- Page-specific styles go below, one section per page ---------- */
+.muted { color: var(--color-muted); margin: 0; }
+
+/* ---------- Product cards (product-card.js), used on several pages ---------- */
+.product-grid,
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space);
+  margin-bottom: calc(var(--space) * 2);
+}
+
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: inherit;
+  text-decoration: none;
+}
+.product-card:hover { border-color: var(--color-accent); }
+.product-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); }
+.product-card h3 { font-size: 1rem; margin: 8px 0 0; }
+.price { margin: 0; }
+.price s { color: var(--color-muted); font-size: 0.9em; }
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  background: var(--color-error);
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+/* ---------- index.html ---------- */
+.hero { padding: calc(var(--space) * 2) 0; }
+.hero h1 { margin: 0 0 8px; }
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: inherit;
+  text-decoration: none;
+  border-top: 6px solid var(--theme);
+}
+.category-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); }
+.category-card h3 { margin: 8px 0 0; }
+.category-card span { color: var(--theme); }
+
+/* ---------- category.html ---------- */
+.banner {
+  margin-bottom: var(--space);
+  padding: calc(var(--space) * 2);
+  border-radius: var(--radius);
+  background: var(--theme, var(--color-accent));
+  color: #fff;
+}
+.banner h1 { margin: 0 0 8px; }
+.banner p { margin: 0; }
+.parent-link { color: #fff; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--space); }
+.chip {
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+}
+.chip:hover { border-color: var(--color-accent); }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--space);
+  margin-bottom: var(--space);
+}
+.filters label { display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem; }
+.filters label.checkbox { flex-direction: row; align-items: center; }
+.filters input[type="number"] { width: 90px; }
+.filters input,
+.filters select { padding: 8px; border: 1px solid var(--color-border); border-radius: var(--radius); }
+
+.pagination { display: flex; gap: var(--space); justify-content: center; align-items: center; }

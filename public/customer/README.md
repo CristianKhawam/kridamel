@@ -9,7 +9,7 @@ To create a page, copy `_template.html` and follow the steps in `public/README.m
 | Page | File |
 |---|---|
 | Home | `index.html` ✔ |
-| Category | `category.html` |
+| Category | `category.html` ✔ |
 | Search results | `search.html` |
 | Product detail | `product.html` |
 | Cart | `cart.html` |
