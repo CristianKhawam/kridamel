@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Category · KRIDAMEL</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/customer/css/customer.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="container">
+    <!-- Banner: name, description and colour of the category (filled by the script). -->
+    <section id="banner" class="banner" hidden>
+      <a id="parent-link" class="parent-link" hidden></a>
+      <h1 id="category-name"></h1>
+      <p id="category-description"></p>
+    </section>
+
+    <nav id="subcategories" class="chips" aria-label="Subcategories"></nav>
+
+    <!-- A normal GET form: submitting it reloads this page with the filters in the URL. -->
+    <form id="filters" class="filters" method="get" hidden>
+      <input type="hidden" name="slug">
+      <label>Brand
+        <select name="brand">
+          <option value="">All brands</option>
+        </select>
+      </label>
+      <label>Min $ <input type="number" name="min" min="0" step="1" inputmode="numeric"></label>
+      <label>Max $ <input type="number" name="max" min="0" step="1" inputmode="numeric"></label>
+      <label class="checkbox"><input type="checkbox" name="inStock" value="true"> In stock only</label>
+      <label>Sort
+        <select name="sort">
+          <option value="newest">Newest</option>
+          <option value="price_asc">Price: low to high</option>
+          <option value="price_desc">Price: high to low</option>
+          <option value="rating">Top rated</option>
+          <option value="best_selling">Best selling</option>
+        </select>
+      </label>
+      <button class="btn" type="submit">Apply</button>
+      <a id="clear-filters" href="#">Clear</a>
+    </form>
+
+    <p id="status" class="status" role="status"></p>
+    <div id="products" class="product-grid"></div>
+
+    <nav id="pagination" class="pagination" aria-label="Pages"></nav>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/customer/js/layout.js"></script>
+  <script src="/customer/js/product-card.js"></script>
+  <script src="/customer/js/category.js"></script>
+</body>
+</html>
