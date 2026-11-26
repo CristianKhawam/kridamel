@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in · KRIDAMEL</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/customer/css/customer.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="container">
+    <h1>Log in</h1>
+
+    <form id="login-form" class="form" novalidate>
+      <label>Email <input name="email" type="email" autocomplete="email" required></label>
+      <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="btn" type="submit">Log in</button>
+      <p id="status" class="status" role="status"></p>
+    </form>
+
+    <p><a href="/customer/forgot-password.html">Forgot your password?</a></p>
+    <p>New here? <a id="register-link" href="/customer/register.html">Create an account</a></p>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/customer/js/layout.js"></script>
+  <script src="/customer/js/login.js"></script>
+</body>
+</html>

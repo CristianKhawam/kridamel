@@ -5,6 +5,18 @@ const User = require('../models/User');
 const COOKIE_NAME = 'token';
 const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000; // in milliseconds
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const POSTAL_CODE_PATTERN = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/; // Canadian, e.g. T2P 1J9
+
+// Fictitious profiles that pre-fill the registration form (cartoon characters, joke addresses).
+// The email and password are always typed by the tester, so a real inbox can receive emails.
+const DEMO_PROFILES = [
+  { id: 'spongebob', name: 'SpongeBob SquarePants', phone: '403-555-0101',
+    address: { line1: '124 Conch Street', city: 'Bikini Bottom', province: 'AB', postalCode: 'T0L 1B0' } },
+  { id: 'ash', name: 'Ash Ketchum', phone: '403-555-0102',
+    address: { line1: '1 Route One', city: 'Pallet Town', province: 'AB', postalCode: 'T0K 0A0' } },
+  { id: 'naruto', name: 'Naruto Uzumaki', phone: '403-555-0103',
+    address: { line1: '7 Ichiraku Lane', city: 'Hidden Leaf Village', province: 'AB', postalCode: 'T0J 2N0' } },
+];
 
 // Cookie settings: httpOnly = page JavaScript cannot read it; secure = only over HTTPS (on Render).
 const cookieOptions = () => ({
@@ -20,7 +32,7 @@ function setLoginCookie(res, user) {
 }
 
 // Checks the registration data. Returns a list of { field, message } (empty = valid).
-function validateRegister({ name, email, password, phone }) {
+function validateRegister({ name, email, password, phone, address }) {
   const errors = [];
   if (typeof name !== 'string' || name.trim().length < 2 || name.trim().length > 80) {
     errors.push({ field: 'name', message: 'must be 2 to 80 characters' });
@@ -31,13 +43,29 @@ function validateRegister({ name, email, password, phone }) {
   if (typeof password !== 'string' || password.length < 8) {
     errors.push({ field: 'password', message: 'must be at least 8 characters' });
   }
-  if (phone !== undefined && typeof phone !== 'string') {
-    errors.push({ field: 'phone', message: 'must be text' });
+  if (phone !== undefined && (typeof phone !== 'string' || phone.length > 20)) {
+    errors.push({ field: 'phone', message: 'must be text of at most 20 characters' });
+  }
+  // The address is optional, but if it is sent, every part is required.
+  if (address !== undefined) {
+    for (const part of ['line1', 'city', 'province', 'postalCode']) {
+      if (typeof address?.[part] !== 'string' || !address[part].trim()) {
+        errors.push({ field: `address.${part}`, message: 'is required' });
+      }
+    }
+    if (typeof address?.postalCode === 'string' && address.postalCode.trim() && !POSTAL_CODE_PATTERN.test(address.postalCode.trim())) {
+      errors.push({ field: 'address.postalCode', message: 'must be a Canadian postal code, e.g. T2P 1J9' });
+    }
   }
   return errors;
 }
 
-// POST /api/auth/register   { name, email, password, phone? }
+// GET /api/auth/demo-profiles
+exports.demoProfiles = (req, res) => {
+  res.json(DEMO_PROFILES);
+};
+
+// POST /api/auth/register   { name, email, password, phone?, address? }
 exports.register = async (req, res, next) => {
   try {
     const body = req.body || {};
@@ -57,6 +85,16 @@ exports.register = async (req, res, next) => {
       name: body.name.trim(),
       email,
       phone: body.phone,
+      addresses: body.address
+        ? [{
+            label: 'Home',
+            line1: body.address.line1.trim(),
+            city: body.address.city.trim(),
+            province: body.address.province.trim(),
+            postalCode: body.address.postalCode.trim().toUpperCase(),
+            isDefault: true,
+          }]
+        : [],
       passwordHash: await bcrypt.hash(body.password, 10),
     });
 

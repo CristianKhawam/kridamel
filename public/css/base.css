@@ -1,3 +1,6 @@
+.site-footer p { margin: 4px 0; }
+.site-footer a { color: inherit; }
+.footer-note { font-size: 0.85rem; }
 /* Base styles shared by the customer store and the admin panel.
    Use the variables below instead of writing colours and sizes by hand. */
 :root {
@@ -46,9 +49,6 @@ body {
 .container { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: var(--space); }
 
 .site-footer { padding: var(--space); text-align: center; color: var(--color-muted); border-top: 1px solid var(--color-border); }
-.site-footer p { margin: 4px 0; }
-.site-footer a { color: inherit; }
-.footer-note { font-size: 0.85rem; }
 
 /* ---------- Shared pieces ---------- */
 .status { color: var(--color-muted); }
@@ -66,3 +66,17 @@ body {
 }
 
 .card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space); }
+
+/* ---------- Forms (login, register, checkout, admin…) ---------- */
+.form { display: grid; gap: var(--space); max-width: 460px; min-width: 0; }
+.form > *, .form label, .form fieldset { min-width: 0; } /* lets long selects/inputs shrink on small phones */
+.form input, .form select { width: 100%; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; }
+.form input,
+.form select,
+.form textarea { padding: 10px; border: 1px solid var(--color-border); border-radius: var(--radius); font: inherit; font-weight: 400; }
+.form input[readonly] { background: #f3f4f6; color: var(--color-muted); }
+.form [aria-invalid="true"] { border-color: var(--color-error); }
+.field-error { color: var(--color-error); font-weight: 400; }
+.form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My account · KRIDAMEL</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/customer/css/customer.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="container">
+    <h1>My account</h1>
+    <p id="status" class="status" role="status"></p>
+
+    <section id="account" class="card account" hidden>
+      <dl>
+        <dt>Name</dt><dd id="account-name"></dd>
+        <dt>Email</dt><dd id="account-email"></dd>
+        <dt>Phone</dt><dd id="account-phone"></dd>
+        <dt>Address</dt><dd id="account-address"></dd>
+        <dt>Member since</dt><dd id="account-since"></dd>
+      </dl>
+      <p>
+        <a class="btn" href="/customer/orders.html">My orders</a>
+        <button id="logout" class="btn secondary" type="button">Log out</button>
+      </p>
+    </section>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/customer/js/layout.js"></script>
+  <script src="/customer/js/account.js"></script>
+</body>
+</html>

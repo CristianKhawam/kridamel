@@ -31,3 +31,26 @@ async function api(path, { method = 'GET', body } = {}) {
 function formatPrice(cents) {
   return new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(cents / 100);
 }
+
+/**
+ * Shows the API's validation errors next to the form fields.
+ * The API sends details like [{ field: 'email', message: 'must be a valid email' }];
+ * each message appears under the input whose name is that field.
+ */
+function showFieldErrors(form, details = []) {
+  clearFieldErrors(form);
+  for (const { field, message } of details) {
+    const input = form.elements[field];
+    if (!input) continue;
+    input.setAttribute('aria-invalid', 'true');
+    const error = document.createElement('small');
+    error.className = 'field-error';
+    error.textContent = message;
+    input.after(error);
+  }
+}
+
+function clearFieldErrors(form) {
+  form.querySelectorAll('.field-error').forEach((el) => el.remove());
+  form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+}

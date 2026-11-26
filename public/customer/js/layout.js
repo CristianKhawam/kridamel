@@ -11,7 +11,7 @@ document.getElementById('site-header').innerHTML = `
     <a href="/customer/category.html?slug=sports">Sports</a>
   </nav>
   <nav>
-    <a href="/customer/login.html">Account</a>
+    <a id="account-link" href="/customer/login.html">Log in</a>
     <a href="/customer/orders.html">Orders</a>
     <a href="/customer/cart.html">Cart</a>
   </nav>`;
@@ -32,4 +32,28 @@ for (const link of document.querySelectorAll('#site-header nav a')) {
   if (link.pathname + link.search === location.pathname + location.search) {
     link.setAttribute('aria-current', 'page');
   }
+}
+
+// Who is logged in? The logged-in user, or null for a visitor.
+// Pages that need a login wait for it:  const user = await sessionReady;
+const sessionReady = api('/api/auth/me')
+  .then((data) => data.user)
+  .catch(() => null);
+
+sessionReady.then((user) => {
+  if (!user) return;
+  const account = document.getElementById('account-link');
+  account.href = '/customer/account.html';
+  account.textContent = `Hi, ${user.name.split(' ')[0]}`;
+  if (user.role === 'admin') {
+    const admin = document.createElement('a');
+    admin.href = '/admin/';
+    admin.textContent = 'Admin';
+    account.before(admin);
+  }
+});
+
+// Sends a visitor to the login page and brings them back here afterwards.
+function goToLogin() {
+  location.href = `/customer/login.html?next=${encodeURIComponent(location.pathname + location.search)}`;
 }
