@@ -16,8 +16,16 @@ document.getElementById('site-header').innerHTML = `
     <a href="/customer/cart.html">Cart</a>
   </nav>`;
 
-document.getElementById('site-footer').textContent =
-  '© 2026 KRIDAMEL · Your World. Your Store. · Prices in CAD';
+document.getElementById('site-footer').innerHTML = `
+  <p>© 2026 KRIDAMEL · Your World. Your Store. · Prices in CAD</p>
+  <p>Website by
+    <a href="https://github.com/CristianKhawam" target="_blank" rel="noopener">Cristian Khawam</a>,
+    <a href="https://github.com/dima-hadla" target="_blank" rel="noopener">Dima Hadla</a> and
+    <a href="https://github.com/ArnaudArmel" target="_blank" rel="noopener">Arnaud Armel</a>
+    · <a href="https://github.com/CristianKhawam/kridamel" target="_blank" rel="noopener">Source code on GitHub</a></p>
+  <p>Images: simple placeholder drawings made with AI for this project.</p>
+  <p class="footer-note">School project for SODV1251 – Bow Valley College. KRIDAMEL is not a real store:
+    products, brands and prices are fictitious and no real payments are made.</p>`;
 
 // Underline the menu link of the page we are on.
 for (const link of document.querySelectorAll('#site-header nav a')) {
