@@ -120,7 +120,22 @@ Coupons: `WELCOME10` (10% off) and `SAVE5` ($5 off orders over $50).
 
 ## Deployment
 
-URL: _pending (Checkpoint 2)_
+**Live URL:** https://kridamel.onrender.com
+
+Hosted on **Render** (web service, free plan) with the database on **MongoDB Atlas**.
+
+| Render setting | Value |
+|---|---|
+| Runtime | Node |
+| Branch | `main` (every merge to `main` deploys automatically) |
+| Build command | `npm install` |
+| Start command | `npm start` |
+| Health check path | `/api/health` |
+| Environment variables | `NODE_ENV=production`, `MONGODB_URI`, `JWT_SECRET` (typed in Render's *Environment* tab, never in the code) |
+
+MongoDB Atlas must allow connections from anywhere (`0.0.0.0/0` in *Network Access*), because Render does not have a fixed IP.
+
+The free plan sleeps after about 15 minutes without visits; the first request after that takes up to a minute. Open the site a few minutes before a demo.
 
 ## Workflow
 
