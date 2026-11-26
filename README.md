@@ -8,6 +8,8 @@ The instructor approved this project as an adaptation of **Option 1 (restaurant 
 
 Store name: **KRIDAMEL** · *Your World. Your Store.* The name blends the team's names: **Cri**stian **K**hawam (KRI), **D**im**a** Hadla (DA) and Arnaud Ar**mel** (MEL).
 
+> **School project.** KRIDAMEL is not a real store: products, brands, prices and customers are fictitious, and no real payments are made.
+
 ## Team
 
 | Member | GitHub |
