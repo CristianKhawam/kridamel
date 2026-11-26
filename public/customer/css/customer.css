@@ -124,3 +124,12 @@
 .stock.out { color: var(--color-error); }
 #quantity { width: 70px; padding: 8px; margin: 0 var(--space) var(--space) 8px; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Shared buttons ---------- */
+.btn.secondary { background: #fff; color: var(--color-text); border: 1px solid var(--color-border); }
+
+/* ---------- account.html ---------- */
+.account { max-width: 560px; }
+.account dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px var(--space); }
+.account dt { font-weight: 600; }
+.account dd { margin: 0; }

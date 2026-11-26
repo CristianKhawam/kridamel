@@ -16,6 +16,6 @@ To create a page, copy `_template.html` and follow the steps in `public/README.m
 | Checkout | `checkout.html` |
 | Order confirmation | `order-confirmation.html` |
 | My orders / order detail | `orders.html`, `order-detail.html` |
-| Login / register | `login.html`, `register.html` |
+| Login / register | `login.html` ✔, `register.html` ✔ (demo profiles) |
 | Forgot / reset password | `forgot-password.html`, `reset-password.html` |
-| Account | `account.html` |
+| Account | `account.html` ✔ |
