@@ -11,7 +11,7 @@ To create a page, copy `_template.html` and follow the steps in `public/README.m
 | Home | `index.html` ✔ |
 | Category | `category.html` ✔ |
 | Search results | `search.html` |
-| Product detail | `product.html` |
+| Product detail | `product.html` ✔ |
 | Cart | `cart.html` |
 | Checkout | `checkout.html` |
 | Order confirmation | `order-confirmation.html` |
