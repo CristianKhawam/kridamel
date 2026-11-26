@@ -6,6 +6,12 @@ try {
   if (err.code !== 'ENOENT') throw err; // ENOENT = no .env file, which is fine
 }
 
+// The login tokens are signed with this secret: without it, nobody could log in.
+if (!process.env.JWT_SECRET) {
+  console.error('JWT_SECRET is missing. Add it to your .env file (see .env.example).');
+  process.exit(1);
+}
+
 const path = require('path');
 const express = require('express');
 
@@ -14,6 +20,7 @@ const healthRoutes = require('./routes/health.routes');
 const categoriesRoutes = require('./routes/categories.routes');
 const productsRoutes = require('./routes/products.routes');
 const brandsRoutes = require('./routes/brands.routes');
+const authRoutes = require('./routes/auth.routes');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -32,6 +39,7 @@ app.use('/api/health', healthRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/brands', brandsRoutes);
+app.use('/api/auth', authRoutes);
 
 // Unknown API routes return 404 JSON, not the HTML page.
 app.use('/api', notFound);
